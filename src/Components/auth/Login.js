@@ -12,7 +12,7 @@ const Login = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const data = await fetch('http://localhost:3001/api/users', {
+      const data = await fetch('http://localhost:3001/api/auth', {
         method: 'POST',
         headers: {
           'Access-Control-Allow-Origin': '*',
