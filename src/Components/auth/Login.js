@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const [formState, setFormState] = useState({
@@ -10,7 +11,6 @@ const Login = () => {
     setFormState({ ...formState, [event.target.name]: event.target.value });
   const onSubmit = async (e) => {
     e.preventDefault();
-
     try {
       const data = await fetch('http://localhost:3001/api/users', {
         method: 'POST',
@@ -33,9 +33,9 @@ const Login = () => {
   };
   return (
     <>
-      <h1 className='large text-primary'>Sign Up</h1>
+      <h1 className='large text-primary'>Sign in</h1>
       <p className='lead'>
-        <i className='fas fa-user'></i> Create Your Account
+        <i className='fas fa-user'></i> Log in
       </p>
       <form className='form' action='create-profile.html' onSubmit={onSubmit}>
         <div className='form-group'>
@@ -61,10 +61,10 @@ const Login = () => {
             value={password}
           />
         </div>
-        <input type='submit' className='btn btn-primary' value='Register' />
+        <input type='submit' className='btn btn-primary' value='Login' />
       </form>
       <p className='my-1'>
-        Already have an account? <a href='login.html'>Sign In</a>
+        Dont have an account? <Link to='register'>Register</Link>
       </p>
     </>
   );
