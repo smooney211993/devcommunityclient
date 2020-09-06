@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-const Register = () => {
+import { connect } from 'react-redux';
+import { setAlert } from '../../actions/alert';
+const Register = (props) => {
   const [formState, setFormState] = useState({
     name: '',
     email: '',
@@ -13,27 +15,9 @@ const Register = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     if (password !== password2) {
-      console.log('password does not match');
-    }
-    try {
-      const data = await fetch('http://localhost:3001/api/users', {
-        method: 'POST',
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Content-type': 'application/json',
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          password,
-        }),
-      });
-      if (data.ok) {
-        const jsonResponse = data.json();
-        console.log(jsonResponse);
-      }
-    } catch (error) {
-      console.log(error);
+      props.setAlert('Password do not match', 'danger');
+    } else {
+      console.log(formState);
     }
   };
   return (
@@ -95,4 +79,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default connect(null, { setAlert })(Register);
