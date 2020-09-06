@@ -17,7 +17,7 @@ const Register = (props) => {
     if (password !== password2) {
       props.setAlert('Password do not match', 'danger');
     } else {
-      console.log(formState);
+      console.log('success');
     }
   };
   return (
