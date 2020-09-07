@@ -18,5 +18,7 @@ Alert.propTypes = {
 const mapStateToProps = (state) => ({
   alerts: state.alert,
 });
+// grab the state from alert reducer and map it to props
+// if alerts return the div container the error msg
 
 export default connect(mapStateToProps)(Alert);
