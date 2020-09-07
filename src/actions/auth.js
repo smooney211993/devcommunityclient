@@ -1,6 +1,6 @@
 import { REGISTER_SUCCESS, REGISTER_FAIL } from './types';
 import { setAlert } from './alert';
-import { axios } from 'axios';
+import axios from 'axios';
 
 export const register = ({ name, email, password }) => async (dispatch) => {
   const config = {
@@ -14,11 +14,17 @@ export const register = ({ name, email, password }) => async (dispatch) => {
     password,
   });
   try {
-    const { data } = await axios.post('http://localhost:3001/api/users');
+    const { data } = await axios.post(
+      'http://localhost:3001/api/users',
+      body,
+      config
+    );
+
     dispatch({
       type: REGISTER_SUCCESS,
       payload: data,
     });
+    // send the json webtoken via the payload
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {
