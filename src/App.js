@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Navbar from './Components/layout/Navbar';
 import Landing from './Components/layout/Landing';
 import Register from './Components/auth/Register';
+import Dashboard from './Components/dashboard/Dashboard';
 import Login from './Components/auth/Login';
 import Alert from './Components/layout/Alert';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -31,6 +32,7 @@ const App = () => {
             <Switch>
               <Route exact path='/register' component={Register} />
               <Route exact path='/login' component={Login} />
+              <Route exact path='/dashboard' component={Dashboard} />
             </Switch>
           </section>
         </>
