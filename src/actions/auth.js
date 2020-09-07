@@ -3,6 +3,8 @@ import {
   REGISTER_FAIL,
   USER_LOADED,
   AUTH_ERROR,
+  LOGIN_SUCCESS,
+  LOGIN_FAIL,
 } from './types';
 import { setAlert } from './alert';
 import axios from 'axios';
@@ -44,7 +46,7 @@ export const register = ({ name, email, password }) => async (dispatch) => {
       body,
       config
     );
-
+    console.log(data);
     dispatch({
       type: REGISTER_SUCCESS,
       payload: data,
@@ -57,6 +59,39 @@ export const register = ({ name, email, password }) => async (dispatch) => {
     }
     dispatch({
       type: REGISTER_FAIL,
+    });
+  }
+};
+
+export const login = (email, password) => async (dispatch) => {
+  const config = {
+    headers: {
+      'Content-type': 'application/json',
+    },
+  };
+  const body = JSON.stringify({
+    email,
+    password,
+  });
+  try {
+    const { data } = await axios.post(
+      'http://localhost:3001/api/users',
+      body,
+      config
+    );
+    console.log(data);
+    dispatch({
+      type: LOGIN_SUCCESS,
+      payload: data,
+    });
+    // send the json webtoken via the payload
+  } catch (err) {
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+    }
+    dispatch({
+      type: LOGIN_FAIL,
     });
   }
 };
