@@ -52,6 +52,7 @@ export const register = ({ name, email, password }) => async (dispatch) => {
       payload: data,
     });
     // send the json webtoken via the payload
+    dispatch(loadUser());
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {
@@ -75,7 +76,7 @@ export const login = (email, password) => async (dispatch) => {
   });
   try {
     const { data } = await axios.post(
-      'http://localhost:3001/api/users',
+      'http://localhost:3001/api/auth',
       body,
       config
     );
@@ -85,6 +86,7 @@ export const login = (email, password) => async (dispatch) => {
       payload: data,
     });
     // send the json webtoken via the payload
+    dispatch(loadUser());
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {

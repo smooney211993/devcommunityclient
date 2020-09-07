@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { login } from '../../actions/auth';
+import PropTypes from 'prop-types';
 
-const Login = () => {
+const Login = ({ login }) => {
   const [formState, setFormState] = useState({
     email: '',
     password: '',
@@ -11,25 +14,7 @@ const Login = () => {
     setFormState({ ...formState, [event.target.name]: event.target.value });
   const onSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const data = await fetch('http://localhost:3001/api/auth', {
-        method: 'POST',
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Content-type': 'application/json',
-        },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
-      });
-      if (data.ok) {
-        const jsonResponse = data.json();
-        console.log(jsonResponse);
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    login(email, password);
   };
   return (
     <>
@@ -69,5 +54,7 @@ const Login = () => {
     </>
   );
 };
-
-export default Login;
+Login.prototype = {
+  login: PropTypes.func,
+};
+export default connect(null, { login })(Login);
