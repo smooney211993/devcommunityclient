@@ -5,6 +5,7 @@ import {
   AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
+  LOGOUT,
 } from './types';
 import { setAlert } from './alert';
 import axios from 'axios';
@@ -63,7 +64,7 @@ export const register = ({ name, email, password }) => async (dispatch) => {
     });
   }
 };
-
+// login, grabs the accesstoken sets it to the header and loads the user
 export const login = (email, password) => async (dispatch) => {
   const config = {
     headers: {
@@ -96,4 +97,8 @@ export const login = (email, password) => async (dispatch) => {
       type: LOGIN_FAIL,
     });
   }
+};
+
+export const logout = () => (dispatch) => {
+  dispatch({ type: LOGOUT });
 };
