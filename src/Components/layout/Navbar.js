@@ -40,6 +40,9 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     </nav>
   );
 };
+
+// if not loading than run the ternary operator
+
 Navbar.propTypes = {
   logout: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
