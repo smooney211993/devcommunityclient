@@ -37,10 +37,11 @@ export const createProfile = (formState, history, edit = false) => async (
       type: GET_PROFILE,
       payload: data,
     });
-    dispatch(setAlert(edit ? 'profile updated' : 'profile created'));
+    dispatch(setAlert(edit ? 'Profile updated' : 'Profile created'));
     if (!edit) {
       history.push('/dashboard');
     }
+    // alerts the user that profile is created and redirects them to dashboard
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {
