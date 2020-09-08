@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { setAlert } from './alert';
 import { GET_PROFILE, PROFILE_ERROR } from './types';
-
+// get current user profile
 export const getCurrentProfile = () => async (dispatch) => {
   try {
     const { data } = await axios.get(`http://localhost:3001/api/profile/me`);
@@ -20,3 +20,6 @@ export const getCurrentProfile = () => async (dispatch) => {
     });
   }
 };
+export const createProfile = (formState, history, edit = false) => async (
+  dispatch
+) => {};
