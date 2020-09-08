@@ -5,6 +5,7 @@ import Register from './Components/auth/Register';
 import Dashboard from './Components/dashboard/Dashboard';
 import Login from './Components/auth/Login';
 import CreateProfile from './Components/profile-forms/CreateProfile';
+import EditProfile from './Components/profile-forms/EditProfile';
 import Alert from './Components/layout/Alert';
 import PrivateRoute from './Components/routing/PrivateRoute';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -39,6 +40,11 @@ const App = () => {
                 exact
                 path='/create-profile'
                 component={CreateProfile}
+              />
+              <PrivateRoute
+                exact
+                path='/edit-profile'
+                component={EditProfile}
               />
             </Switch>
           </section>
