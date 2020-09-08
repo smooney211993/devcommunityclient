@@ -40,7 +40,7 @@ const AddEducation = ({ addEducation, history }) => {
         that you have attended
       </p>
       <small>* = required field</small>
-      <form className='form'>
+      <form className='form' onSubmit={onSubmit}>
         <div className='form-group'>
           <input
             type='text'
@@ -70,7 +70,7 @@ const AddEducation = ({ addEducation, history }) => {
         </div>
         <div className='form-group'>
           <h4>From Date</h4>
-          <input type='date' name='from' />
+          <input type='date' name='from' value={from} onChange={handleInputs} />
         </div>
         <div className='form-group'>
           <p>
