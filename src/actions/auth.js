@@ -17,10 +17,10 @@ export const loadUser = () => async (dispatch) => {
     // set the header with the token if token is present
   }
   try {
-    const { user } = await axios.get('http://localhost:3001/api/auth');
+    const { data } = await axios.get('http://localhost:3001/api/auth');
     dispatch({
       type: USER_LOADED,
-      payload: user,
+      payload: data,
     });
   } catch (err) {
     dispatch({
