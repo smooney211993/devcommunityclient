@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -50,7 +51,7 @@ const CreateProfile = (props) => {
       <small>* = required field</small>
       <form className='form'>
         <div className='form-group'>
-          <select name='status' onChange={handleInputs}>
+          <select name='status' onChange={handleInputs} value={status}>
             <option value='0'>* Select Professional Status</option>
             <option value='Developer'>Developer</option>
             <option value='Junior Developer'>Junior Developer</option>
@@ -127,7 +128,11 @@ const CreateProfile = (props) => {
           </small>
         </div>
         <div className='form-group'>
-          <textarea placeholder='A short bio of yourself' name='bio'></textarea>
+          <textarea
+            placeholder='A short bio of yourself'
+            name='bio'
+            onChange={handleInputs}
+            value={bio}></textarea>
           <small className='form-text'>Tell us a little about yourself</small>
         </div>
 
@@ -210,4 +215,4 @@ const CreateProfile = (props) => {
 
 CreateProfile.propTypes = {};
 
-export default CreateProfile;
+export default connect()(CreateProfile);
