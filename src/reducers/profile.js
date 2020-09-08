@@ -27,6 +27,8 @@ export default function (state = initialState, action) {
         ...state,
         profile: null,
         repo: null,
+        error: null,
+        loading: false,
       };
     default:
       return state;
