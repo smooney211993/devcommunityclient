@@ -5,6 +5,7 @@ import Register from './Components/auth/Register';
 import Dashboard from './Components/dashboard/Dashboard';
 import Login from './Components/auth/Login';
 import Alert from './Components/layout/Alert';
+import PrivateRoute from './Components/routing/PrivateRoute';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import setAuthToken from './utils/setAuthToken';
@@ -32,7 +33,7 @@ const App = () => {
             <Switch>
               <Route exact path='/register' component={Register} />
               <Route exact path='/login' component={Login} />
-              <Route exact path='/dashboard' component={Dashboard} />
+              <PrivateRoute exact path='/dashboard' component={Dashboard} />
             </Switch>
           </section>
         </>
