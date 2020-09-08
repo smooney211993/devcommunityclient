@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { setAlert } from './alert';
-import { history } from 'react-router-dom';
 import { GET_PROFILE, PROFILE_ERROR } from './types';
 // get current user profile
 export const getCurrentProfile = () => async (dispatch) => {
@@ -37,7 +36,7 @@ export const createProfile = (formState, history, edit = false) => async (
       type: GET_PROFILE,
       payload: data,
     });
-    dispatch(setAlert(edit ? 'Profile updated' : 'Profile created'));
+    dispatch(setAlert(edit ? 'Profile updated' : 'Profile created', 'success'));
     if (!edit) {
       history.push('/dashboard');
     }
