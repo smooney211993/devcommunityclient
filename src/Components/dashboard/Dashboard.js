@@ -6,13 +6,23 @@ import Spinner from '../layout/Spinner';
 
 export const Dashboard = ({
   getCurrentProfile,
-  auth,
+  auth: { user },
   profile: { profile, loading },
 }) => {
   useEffect(() => {
     getCurrentProfile();
   }, []);
-  return loading && profile === null ? <Spinner /> : <>dashboard</>;
+  return loading && profile === null ? (
+    <Spinner />
+  ) : (
+    <>
+      <h1 className='large text-primary'>Dashboard</h1>
+      <p className='lead'>
+        <i className='fa fa-user'></i>Hello {user && user.name}
+      </p>
+      {profile !== null ? <>has</> : <>has not</>}
+    </>
+  );
 };
 
 Dashboard.propTypes = {
