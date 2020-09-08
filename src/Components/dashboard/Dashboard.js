@@ -1,5 +1,6 @@
 import React from 'react';
 import Proptypes from 'prop-types';
+import { connect } from 'react-redux';
 
 export const Dashboard = () => {
   return <div>Dashboard</div>;
@@ -7,4 +8,4 @@ export const Dashboard = () => {
 
 Dashboard.propTypes = {};
 
-export default Dashboard;
+export default connect()(Dashboard);
