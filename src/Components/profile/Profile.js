@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getProfileById } from '../../actions/profile';
@@ -13,7 +14,7 @@ const Profile = ({
   useEffect(() => {
     getProfileById(match.params.id);
   }, [getProfileById]);
-  return <div>profile</div>;
+  return <>{profile === null && loading ? <Spinner /> : <></>}</>;
 };
 
 Profile.propTypes = {
