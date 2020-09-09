@@ -14,7 +14,19 @@ const Profile = ({
   useEffect(() => {
     getProfileById(match.params.id);
   }, [getProfileById]);
-  return <>{profile === null && loading ? <Spinner /> : <></>}</>;
+  return (
+    <>
+      {profile === null && loading ? (
+        <Spinner />
+      ) : (
+        <>
+          <Link to='/profiles' className='btn btn-light'>
+            Back To Profiles
+          </Link>
+        </>
+      )}
+    </>
+  );
 };
 
 Profile.propTypes = {
