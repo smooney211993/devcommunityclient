@@ -228,7 +228,7 @@ export const deleteAccount = () => async (dispatch) => {
     )
   ) {
     try {
-      const { data } = await axios.delete(`http://localhost:3001/api/profile`);
+      await axios.delete(`http://localhost:3001/api/profile`);
       dispatch({ type: CLEAR_PROFILE });
       dispatch({ type: ACCOUNT_DELETED });
       dispatch(setAlert('Your account has been permenatly deleted'));
