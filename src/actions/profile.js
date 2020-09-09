@@ -121,3 +121,48 @@ export const addEducation = (formState, history) => async (dispatch) => {
     });
   }
 };
+
+// delete profilee experience
+export const deleteExperience = (experienceId) => async (dispatch) => {
+  try {
+    const { data } = await axios.delete(
+      `http://localhost:3001/api/profile/experience/${experienceId}`
+    );
+    dispatch({
+      type: UPDATE_PROFILE,
+      payload: data,
+    });
+    dispatch(setAlert('Experience deleted', 'success'));
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: {
+        msg: err.response.statusText,
+        status: err.response.status,
+      },
+    });
+  }
+};
+
+export const deleteEducation = (educationId) => async (dispatch) => {
+  try {
+    const { data } = await axios.delete(
+      `http://localhost:3001/api/profile/education/${educationId}`
+    );
+    dispatch({
+      type: UPDATE_PROFILE,
+      payload: data,
+    });
+    dispatch(setAlert('Education deleted', 'success'));
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: {
+        msg: err.response.statusText,
+        status: err.response.status,
+      },
+    });
+  }
+};
+
+// delete account
