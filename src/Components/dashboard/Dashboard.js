@@ -6,6 +6,7 @@ import { getCurrentProfile } from '../../actions/profile';
 import Spinner from '../layout/Spinner';
 import DashboardLinks from './DashboardLinks';
 import Experience from './Experience';
+import Education from './Education';
 
 export const Dashboard = ({
   getCurrentProfile,
@@ -27,6 +28,7 @@ export const Dashboard = ({
         <>
           <DashboardLinks />
           <Experience experience={profile.experience} />
+          <Education education={profile.education} />
         </>
       ) : (
         <>
