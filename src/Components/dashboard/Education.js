@@ -43,5 +43,8 @@ const Education = ({ education, deleteEducation }) => {
     </>
   );
 };
+Education.propTypes = {
+  deleteEducation: PropTypes.func.isRequired,
+};
 
 export default connect(null, { deleteEducation })(Education);
