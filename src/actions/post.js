@@ -3,7 +3,7 @@ import { setAlert } from './alert';
 import { GET_POSTS, POST_ERROR } from './types';
 
 // get post from database
-export const getPost = () => async (dispatch) => {
+export const getPosts = () => async (dispatch) => {
   try {
     const { data } = await axios.get('http://localhost:3001/api/post');
     dispatch({
