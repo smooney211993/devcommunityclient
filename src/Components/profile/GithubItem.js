@@ -15,7 +15,7 @@ const GithubItem = ({
     <div className='repo -bg-white p-1 my-1'>
       <div>
         <h4>
-          <a href={html_url} target='_blank' rel='noopener noreferer'>
+          <a href={html_url} target='_blank' rel='noopener noreferrer'>
             {name}
           </a>
         </h4>
@@ -32,6 +32,8 @@ const GithubItem = ({
   );
 };
 
-GithubItem.propTypes = {};
+GithubItem.propTypes = {
+  repo: PropTypes.object.isRequired,
+};
 
 export default GithubItem;

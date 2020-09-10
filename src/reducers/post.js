@@ -1,4 +1,4 @@
-import { GET_POST, POST_ERROR } from '../actions/types';
+import { GET_POSTS, POST_ERROR } from '../actions/types';
 const initialState = {
   posts: [],
   post: null,
@@ -8,12 +8,20 @@ const initialState = {
 
 export default function (state = initialState, action) {
   const { type, payload } = action;
-  switch (action) {
-    case GET_POST:
+  switch (type) {
+    case GET_POSTS:
       return {
         ...state,
-        post: payload,
+        posts: payload,
         loading: false,
       };
+    case POST_ERROR:
+      return {
+        ...state,
+        error: payload,
+        loading: false,
+      };
+    default:
+      return state;
   }
 }
