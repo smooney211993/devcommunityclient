@@ -69,7 +69,7 @@ const EditProfile = ({
   };
   return (
     <>
-      {loading ? (
+      {loading || !profile ? (
         <Spinner />
       ) : (
         <>
