@@ -7,6 +7,7 @@ import Spinner from '../layout/Spinner';
 import ProfileTop from './ProfileTop';
 import ProfileAboutMe from './ProfileAboutMe';
 import ProfileExperience from './ProfileExperience';
+import ProfileEducation from './ProfileEducation';
 
 const Profile = ({
   match,
@@ -50,6 +51,21 @@ const Profile = ({
                 </>
               ) : (
                 <h4>There are no experiences</h4>
+              )}
+            </div>
+            <div className='profle-edu bg-white p-2'>
+              <h2 class='text-primary'>Education</h2>
+              {profile.education.length > 0 ? (
+                <>
+                  {profile.education.map((education) => (
+                    <ProfileEducation
+                      key={education._id}
+                      education={education}
+                    />
+                  ))}
+                </>
+              ) : (
+                <h4>There are no education</h4>
               )}
             </div>
           </div>
