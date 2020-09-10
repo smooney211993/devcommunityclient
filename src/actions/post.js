@@ -1,6 +1,12 @@
 import axios from 'axios';
 import { setAlert } from './alert';
-import { GET_POSTS, POST_ERROR, UPDATE_LIKES, DELETE_POST } from './types';
+import {
+  GET_POSTS,
+  POST_ERROR,
+  UPDATE_LIKES,
+  DELETE_POST,
+  ADD_POST,
+} from './types';
 
 // get post from database
 export const getPosts = () => async (dispatch) => {
@@ -67,6 +73,31 @@ export const deletePost = (postId) => async (dispatch) => {
     dispatch({
       type: POST_ERROR,
       payload: { msg: error.response.statusText, err: error.response.status },
+    });
+  }
+};
+
+export const addPost = (formState) => async (dispatch) => {
+  const config = {
+    headers: {
+      'Content-type': 'application/json',
+    },
+  };
+  try {
+    const { data } = await axios.post(
+      `http://localhost:3001/api/post`,
+      formState,
+      config
+    );
+    dispatch({
+      type: ADD_POST,
+      payload: data,
+    });
+    dispatch(setAlert('Post Created', 'success'));
+  } catch (error) {
+    dispatch({
+      type: POST_ERROR,
+      payload: { msg: error.response.status, err: error.response.status },
     });
   }
 };
