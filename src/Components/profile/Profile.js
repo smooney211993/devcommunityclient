@@ -8,6 +8,7 @@ import ProfileTop from './ProfileTop';
 import ProfileAboutMe from './ProfileAboutMe';
 import ProfileExperience from './ProfileExperience';
 import ProfileEducation from './ProfileEducation';
+import ProfileGithub from './ProfileGithub';
 
 const Profile = ({
   match,
@@ -68,6 +69,9 @@ const Profile = ({
                 <h4>There are no education</h4>
               )}
             </div>
+            {profile.githubusername && (
+              <ProfileGithub username={profile.githubusername} />
+            )}
           </div>
         </>
       )}
