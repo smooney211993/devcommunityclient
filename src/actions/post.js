@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { setAlert } from './alert';
-import { GET_POSTS, POST_ERROR } from './types';
+import { GET_POSTS, POST_ERROR, UPDATE_LIKES } from './types';
 
 // get post from database
 export const getPosts = () => async (dispatch) => {
@@ -17,3 +17,5 @@ export const getPosts = () => async (dispatch) => {
     });
   }
 };
+
+export const addLike = (postId) => (dispatch) => {};
