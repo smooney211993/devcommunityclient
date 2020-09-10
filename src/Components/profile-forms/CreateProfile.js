@@ -43,11 +43,6 @@ const CreateProfile = ({ createProfile, history }) => {
   };
   const onSubmit = (e) => {
     e.preventDefault();
-    let websiteUrl = '';
-    if (!formState.website.includes('http://', 'https://')) {
-      websiteUrl = `https://${formState.website}`;
-    }
-    setFormState({ ...formState, website: websiteUrl });
     createProfile(formState, history);
   };
   return (
