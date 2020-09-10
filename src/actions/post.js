@@ -17,11 +17,28 @@ export const getPosts = () => async (dispatch) => {
     });
   }
 };
-
+// add likes to post
 export const addLike = (postId) => async (dispatch) => {
   try {
     const { data } = await axios.put(
       `http://localhost:3001/api/post/like/${postId}`
+    );
+    dispatch({
+      type: UPDATE_LIKES,
+      payload: { postId, likes: data },
+    });
+  } catch (err) {
+    dispatch({
+      type: POST_ERROR,
+      payload: { msg: err.response.statusText, err: err.response.status },
+    });
+  }
+};
+// unlike post
+export const unLike = (postId) => async (dispatch) => {
+  try {
+    const { data } = await axios.put(
+      `http://localhost:3001/api/post/unlike/${postId}`
     );
     dispatch({
       type: UPDATE_LIKES,
