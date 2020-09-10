@@ -10,6 +10,7 @@ import AddExperience from './Components/profile-forms/AddExperience';
 import AddEducation from './Components/profile-forms/AddEducation';
 import Profiles from './Components/profiles/Profiles';
 import Posts from './Components/Posts/Posts';
+import Post from './Components/post/Post';
 import Alert from './Components/layout/Alert';
 import PrivateRoute from './Components/routing/PrivateRoute';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -64,6 +65,7 @@ const App = () => {
                 component={AddEducation}
               />
               <PrivateRoute exact path='/posts' component={Posts} />
+              <PrivateRoute exact path='/posts/:id' component={Post} />
             </Switch>
           </section>
         </>
