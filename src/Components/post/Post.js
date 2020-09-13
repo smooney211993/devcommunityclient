@@ -1,14 +1,21 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import PostItem from '../Posts/PostItem';
 import Spinner from '../layout/Spinner';
 import { getPostById } from '../../actions/post';
 
 const Post = ({ getPostById, post: { post, loading }, match }) => {
   useEffect(() => {
     getPostById(match.params.id);
-  }, [getPostById]);
-  return <div>Post</div>;
+  }, [getPostById, match.params.id]);
+  return loading || post === null ? (
+    <Spinner />
+  ) : (
+    <>
+      <PostItem post={post} showActions={false} />
+    </>
+  );
 };
 
 Post.propTypes = {
