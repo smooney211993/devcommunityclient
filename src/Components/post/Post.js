@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import PostItem from '../Posts/PostItem';
 import Spinner from '../layout/Spinner';
@@ -13,6 +14,9 @@ const Post = ({ getPostById, post: { post, loading }, match }) => {
     <Spinner />
   ) : (
     <>
+      <Link to='/posts' className='btn'>
+        Back to all posts
+      </Link>
       <PostItem post={post} showActions={false} />
     </>
   );

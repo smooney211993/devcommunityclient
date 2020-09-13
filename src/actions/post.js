@@ -7,6 +7,8 @@ import {
   DELETE_POST,
   ADD_POST,
   GET_POST,
+  ADD_COMMENT,
+  REMOVE_COMMENT,
 } from './types';
 
 export const getPostById = (postId) => async (dispatch) => {
@@ -119,4 +121,5 @@ export const addPost = (formState) => async (dispatch) => {
     });
   }
 };
-// get post
+// add comment
+const addComment = (postId, formState) => async (disptach) => {};
