@@ -28,8 +28,6 @@ export default function (state = initialState, action) {
       };
     case REGISTER_SUCCESS:
     case LOGIN_SUCCESS:
-      localStorage.setItem('token', payload.token);
-      // set the localstorage token with the payload token that was fetched from the database
       return {
         ...state,
         ...payload,
@@ -41,7 +39,6 @@ export default function (state = initialState, action) {
     case AUTH_ERROR:
     case LOGOUT:
     case ACCOUNT_DELETED:
-      localStorage.removeItem('token');
       return {
         ...state,
         user: null,

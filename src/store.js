@@ -2,6 +2,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
+import setAuthToken from './utils/setAuthToken';
 
 const initialState = {};
 const middleWare = [thunk];
@@ -10,6 +11,7 @@ const store = createStore(
   initialState,
   composeWithDevTools(applyMiddleware(...middleWare))
 );
+let currentState = store.getState();
 store.subscribe(() => {
   // keep track of the previous and current state to compare changes
   let previousState = currentState;
