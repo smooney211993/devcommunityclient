@@ -13,10 +13,6 @@ import axios from 'axios';
 import setAuthToken from '../utils/setAuthToken';
 // load user
 export const loadUser = () => async (dispatch) => {
-  if (localStorage.token) {
-    setAuthToken(localStorage.token);
-    // set the header with the token if token is present
-  }
   try {
     const { data } = await axios.get('http://localhost:3001/api/auth');
     dispatch({
