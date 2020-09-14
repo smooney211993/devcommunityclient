@@ -131,7 +131,7 @@ const addComment = (postId, formState) => async (dispatch) => {
   try {
     const { data } = await axios(
       `http://localhost:3001/api/post/comments/${postId}`,
-      formStatem,
+      formState,
       config
     );
     dispatch({
@@ -150,9 +150,14 @@ const addComment = (postId, formState) => async (dispatch) => {
 
 const deleteComments = (postId, commentId) => async (dispatch) => {
   try {
-    const { data } = await axios.delete(
+    await axios.delete(
       `http://localhost:3001/api/post/comments/${postId}/${commentId}`
     );
+    dispatch({
+      type: REMOVE_COMMENT,
+      payload: commentId,
+    });
+    dispatch(setAlert('Comment Removed', 'success'));
   } catch (error) {
     dispatch({
       type: POST_ERROR,

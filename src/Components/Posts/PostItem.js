@@ -12,6 +12,7 @@ const PostItem = ({
   addLike,
   deletePost,
   showActions,
+  discussion,
 }) => {
   return (
     <div className='post bg-white p-1 my-1'>
@@ -65,6 +66,7 @@ const PostItem = ({
 };
 PostItem.defaultProps = {
   showActions: true,
+  discussion: false,
 };
 PostItem.propTypes = {
   auth: PropTypes.object.isRequired,

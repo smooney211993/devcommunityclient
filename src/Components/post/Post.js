@@ -17,7 +17,9 @@ const Post = ({ getPostById, post: { post, loading }, match }) => {
       <Link to='/posts' className='btn'>
         Back to all posts
       </Link>
-      <PostItem post={post} showActions={false} />
+      {post.comments.map((comment) => (
+        <PostItem post={comment} showActions={false} />
+      ))}
     </>
   );
 };
