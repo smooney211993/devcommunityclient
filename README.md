@@ -17,4 +17,4 @@ The initial set up of redux involves alot of boilerplate code - Might learn the 
 
 deployed app: https://devcommunity2000.herokuapp.com/posts
 
-The CSS and layout was provided through Brad traversy's Udemy course, However all the code is my own.
+The CSS and layout was provided through Brad traversy's Udemy course, however all the code is my own.
