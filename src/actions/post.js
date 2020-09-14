@@ -122,4 +122,41 @@ export const addPost = (formState) => async (dispatch) => {
   }
 };
 // add comment
-const addComment = (postId, formState) => async (disptach) => {};
+const addComment = (postId, formState) => async (dispatch) => {
+  const config = {
+    headers: {
+      'Content-type': 'application/json',
+    },
+  };
+  try {
+    const { data } = await axios(
+      `http://localhost:3001/api/post/comments/${postId}`,
+      formStatem,
+      config
+    );
+    dispatch({
+      type: ADD_COMMENT,
+      payload: data,
+    });
+    dispatch(setAlert('Comment created', 'success'));
+  } catch (error) {
+    dispatch({
+      type: POST_ERROR,
+      payload: { msg: error.response.status, err: error.response.status },
+    });
+  }
+};
+// delete comment
+
+const deleteComments = (postId, commentId) => async (dispatch) => {
+  try {
+    const { data } = await axios.delete(
+      `http://localhost:3001/api/post/comments/${postId}/${commentId}`
+    );
+  } catch (error) {
+    dispatch({
+      type: POST_ERROR,
+      payload: { msg: error.response.status, err: error.response.status },
+    });
+  }
+};
