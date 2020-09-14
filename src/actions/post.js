@@ -122,14 +122,14 @@ export const addPost = (formState) => async (dispatch) => {
   }
 };
 // add comment
-const addComment = (postId, formState) => async (dispatch) => {
+export const addComment = (postId, formState) => async (dispatch) => {
   const config = {
     headers: {
       'Content-type': 'application/json',
     },
   };
   try {
-    const { data } = await axios(
+    const { data } = await axios.post(
       `http://localhost:3001/api/post/comments/${postId}`,
       formState,
       config
@@ -148,7 +148,7 @@ const addComment = (postId, formState) => async (dispatch) => {
 };
 // delete comment
 
-const deleteComments = (postId, commentId) => async (dispatch) => {
+export const deleteComment = (postId, commentId) => async (dispatch) => {
   try {
     await axios.delete(
       `http://localhost:3001/api/post/comments/${postId}/${commentId}`

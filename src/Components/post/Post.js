@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import PostItem from '../Posts/PostItem';
 import Spinner from '../layout/Spinner';
 import { getPostById } from '../../actions/post';
+import CommentItem from './CommentItem';
+import CommentForm from './CommentForm';
 
 const Post = ({ getPostById, post: { post, loading }, match }) => {
   useEffect(() => {
@@ -17,9 +19,12 @@ const Post = ({ getPostById, post: { post, loading }, match }) => {
       <Link to='/posts' className='btn'>
         Back to all posts
       </Link>
-      {post.comments.map((comment) => (
-        <PostItem post={comment} showActions={false} />
-      ))}
+      <PostItem post={post} showActions={false} />
+      <CommentForm postId={post._id} />
+      {post.comments.length > 0 &&
+        post.comments.map((comment) => (
+          <CommentItem comment={comment} postId={post._id} />
+        ))}
     </>
   );
 };
