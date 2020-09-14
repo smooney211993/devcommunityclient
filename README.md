@@ -13,7 +13,7 @@ Some of the forms need input validation such as the website form, this could pro
 
 None of my previous apps ever needed state management so learning redux whilsts building the front end at times was proven to be quite difficult.
 Learning redux involved alot of documentation reading and googling specific problems.
-The initial set up of redux involves alot of boilerplate code - Might learn the useContext and useReducer from react as it involves less initial set up and other development teams might prefer these tools.
+The initial set up of redux involves alot of boilerplate code - Might learn the useContext and useReducer from react as it involves less initial set up and other developing teams might prefer those tools.
 
 Deployed app: https://devcommunity2000.herokuapp.com/login
 
